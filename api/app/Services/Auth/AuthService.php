@@ -3,6 +3,7 @@
 namespace App\Services\Auth;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthService
@@ -25,6 +26,30 @@ class AuthService
             'token' => $token,
         ];
 
+    }
+
+    public function login (array $data): array
+
+    {
+        $user = Auth::attempt([
+            'email' => $data['email'],
+            'password' => $data['password']
+        ]);
+
+
+         if($user){
+
+            $userData = Auth::user();
+
+            $token = $userData->createToken('auth_token')->plainTextToken;
+
+            return [
+                'user' => $userData,
+                'token' => $token,
+            ];
+         } else{
+            throw new \Exception('Invalid credentials');
+         }
     }
 
 }
