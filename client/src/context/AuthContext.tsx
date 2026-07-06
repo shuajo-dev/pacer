@@ -1,12 +1,20 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
+import { User } from '../types/index';
 
-const AuthContext = createContext(null);
+interface AuthContextType {
+    user: User | null;
+    login: (userData: User, token: string) => void;
+    logout: () => void;
 
-export const AuthProvider = ({ children }) => {
+}
 
-    const [user, setUser] = useState(null);
+const AuthContext = createContext<AuthContextType | null>(null);
 
-    const login = (userData, token) => {
+export const AuthProvider = ({ children } : {children: ReactNode}) => {
+
+    const [user, setUser] = useState<User | null>(null);
+
+    const login = (userData:User , token: string): void => {
         localStorage.setItem('auth_token', token);
         setUser(userData);
     };
