@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\RunController;
 
 
 Route::get('/user', function (Request $request) {
@@ -18,4 +19,8 @@ Route::get('/health', function() {
         'status' => 'ok',
         'timestamp' => now(),
     ]);
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('runs', RunController::class);
 });
