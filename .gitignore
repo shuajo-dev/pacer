@@ -39,3 +39,7 @@ auth.json
 /api/storage/pacer-interview-qa.md
 /api/storage/pacer-migration-plan.md
 
+# Local Claude Code dev server config (machine-specific)
+/.claude/
+.DS_Store
+
