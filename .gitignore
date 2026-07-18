@@ -28,3 +28,14 @@ Homestead.json
 .env.production
 .phpactor.json
 auth.json
+
+# Personal notes / AI assistant context (not part of the codebase)
+/CLAUDE.md
+/api/storage/CLAUDE.md
+/pacer-concepts-reviewer.md
+/pacer-interview-qa.md
+/pacer-migration-plan.md
+/api/storage/pacer-concepts-reviewer.md
+/api/storage/pacer-interview-qa.md
+/api/storage/pacer-migration-plan.md
+
