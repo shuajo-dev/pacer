@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@theme {
+    --color-racing-green: #004225;
+    --color-racing-blue: #002395;
+    --color-racing-red: #CE2B37;
+    --color-racing-yellow: #F4C430;
+    --color-cream: #F8EEEC;
+
+    --font-heading: "Montserrat", sans-serif;
+    --font-body: "Inter", sans-serif;
+
+}

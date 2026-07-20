@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { login as loginApi } from '../api/auth'
+import logo  from '../assets/pacerlogo.png'
+import loginBg from '../assets/login-bg2.jpg'
 
 
 interface LoginForm {
@@ -38,31 +40,56 @@ const Login = () => {
     } 
 
     return ( 
-        <div> 
-            <h1> Login </h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
+       <div className="min-h-screen flex flex-col md:flex-row">
+        {/* Left Panel */}
+         <div style={{ backgroundImage: `url(${loginBg})` }} className="md:w-3/4 bg-cover bg-right">
+        
+        </div> 
 
-                {errors.email && <p> {errors.email[0]}</p>}
+        {/* Right Panel */}
+        <div className="md:w-1/2 bg-cream flex flex-col items-center justify-center">
+               <img src={logo} alt="Pacer" className="w-full max-w-sm h-auto rounded-md object-cover mb-4" />
+                
+                <p className="font-body text-md text-racing-green/80 text-center mb-6">
+                    Ready to Run? Welcome back.
+                </p>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-md">
+                        <div>
+                            <input
+                                name="email"
+                                type="email"
+                                placeholder="Email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                className="w-full font-body border border-racing-green/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-racing-green"
+                            />
+                            {errors.email && <p className="text-racing-red text-sm mt-1"> {errors.email[0]}</p>}
+                        </div>
 
-                <input
-                    name="password"
-                    type="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
-                {errors.password && <p> {errors.password[0]}</p>}
+                        <div>
+                            <input
+                                name="password"
+                                type="password"
+                                placeholder="Password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                className="w-full font-body border border-racing-green/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-racing-green"
+                            />
+                            {errors.password && <p className="text-racing-red text-sm mt-1"> {errors.password[0]}</p>}
+                        </div>
 
-                <button type="submit" disabled={loading}>
-                    {loading ? 'Logging in...' : 'Login'}
-                </button>
-            </form>
-        </div>
+                        <button
+                                type="submit"
+                                disabled={loading}
+                                className="bg-racing-green text-cream font-body font-medium rounded-lg py-2 mt-2 hover:bg-racing-green/90 disabled:opacity-50 transition-colors"
+                        >
+
+                        {loading ? 'Logging in...' : 'Login'}
+                        
+                        </button>
+                </form>
+            </div>
+       </div>
     )
 
 
