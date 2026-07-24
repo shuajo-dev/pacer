@@ -6,6 +6,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import RunsList from './pages/runs/RunsList'
 import RunDetail from './pages/runs/RunDetail'
 import LogRun from './pages/runs/LogRun'
+import Dashboard from './pages/Dashboard'
 
 
 const App = () => {
@@ -16,7 +17,7 @@ const App = () => {
 
       <Route path="/" element = {
         <ProtectedRoute>
-          <div> Dashboard </div>
+          <Dashboard />
         </ProtectedRoute>
       } 
       />
